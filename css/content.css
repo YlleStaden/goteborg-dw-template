@@ -176,8 +176,8 @@
 .page-content form select,
 .page-content form textarea {
   border: 1px solid var(--bs-border-color);
-  border-radius: 4px;
-  padding: 6px 10px;
+  border-radius: var(--border-radius-md, 4px);
+  padding: 8px 12px;
   background-color: var(--bs-body-bg);
   color: var(--bs-body-color);
 }
@@ -193,6 +193,40 @@
 .page-content form textarea {
   min-height: 400px;
   width: 100%;
+}
+
+/* DokuWikis redigeringsruta - större och tydligare skrivyta */
+textarea#wiki__text.edit {
+  min-height: 65vh;
+  width: 100%;
+  padding: var(--spacing-md);
+  font-family: var(--bs-font-monospace, Consolas, 'Liberation Mono', Menlo, monospace);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  border: 1px solid var(--dokuwiki-border);
+  border-radius: var(--border-radius-md);
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+  box-shadow: var(--shadow-sm);
+  resize: vertical;
+}
+
+textarea#wiki__text.edit:focus {
+  border-color: var(--goteborg-blue);
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(var(--bs-primary-rgb), 0.25);
+}
+
+[data-bs-theme="dark"] textarea#wiki__text.edit {
+  background-color: var(--dark_background_alt__);
+  border-color: var(--dark_border__);
+  color: var(--dark_text__);
+}
+
+@media (max-width: 767.98px) {
+  textarea#wiki__text.edit {
+    min-height: 50vh;
+  }
 }
 
 /* Breadcrumbs */
@@ -317,5 +351,151 @@ div.error {
 
 [data-bs-theme="dark"] .diff-deletedline {
   background-color: #352525;
+}
+
+/* Taggar (tag plugin) - visas uppe till höger i sidhuvudet, se main.php */
+.goteborg-tags {
+  gap: var(--spacing-xs);
+  align-items: center;
+}
+
+.goteborg-tags-icon {
+  color: var(--goteborg-blue);
+  margin-right: 0.15em;
+  font-size: 0.85rem;
+}
+
+.goteborg-tag-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25em 0.75em;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: var(--goteborg-blue);
+  border-radius: var(--border-radius-lg);
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.goteborg-tag-badge:hover,
+.goteborg-tag-badge:focus {
+  background-color: var(--goteborg-dark-blue);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Tagg vars sida inte finns ännu */
+.goteborg-tag-badge--empty {
+  background-color: transparent;
+  color: var(--goteborg-blue);
+  border: 1px solid var(--goteborg-blue);
+}
+
+.goteborg-tag-badge--empty:hover,
+.goteborg-tag-badge--empty:focus {
+  background-color: var(--goteborg-blue);
+  color: #fff;
+}
+
+[data-bs-theme="dark"] .goteborg-tags-icon {
+  color: var(--goteborg-light-blue);
+}
+
+[data-bs-theme="dark"] .goteborg-tag-badge {
+  background-color: var(--goteborg-light-blue);
+  color: #04263f;
+}
+
+[data-bs-theme="dark"] .goteborg-tag-badge:hover,
+[data-bs-theme="dark"] .goteborg-tag-badge:focus {
+  background-color: var(--goteborg-blue);
+  color: #fff;
+}
+
+[data-bs-theme="dark"] .goteborg-tag-badge--empty {
+  color: var(--goteborg-light-blue);
+  border-color: var(--goteborg-light-blue);
+}
+
+[data-bs-theme="dark"] .goteborg-tag-badge--empty:hover,
+[data-bs-theme="dark"] .goteborg-tag-badge--empty:focus {
+  background-color: var(--goteborg-light-blue);
+  color: #04263f;
+}
+
+@media (max-width: 575.98px) {
+  .goteborg-tags {
+    justify-content: flex-start !important;
+  }
+}
+
+/* Dölj tag-pluginets egen radering i sidans brödtext - taggarna visas
+   redan snyggare uppe till höger i sidhuvudet, se .goteborg-tags ovan */
+.page-content div.tags {
+  display: none;
+}
+
+/* Sidkarta / webbplatsindex (do=index) */
+.page-content div.index {
+  padding: var(--spacing-sm) 0;
+}
+
+.page-content ul.idx {
+  list-style: none;
+  margin: 0;
+  padding-left: var(--spacing-lg);
+}
+
+.page-content div.index > ul.idx {
+  padding-left: 0;
+}
+
+.page-content ul.idx li {
+  margin: 0.2em 0;
+}
+
+.page-content ul.idx div.li {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  padding: 0.1em 0;
+}
+
+.page-content ul.idx a.idx_dir {
+  font-weight: 600;
+  color: var(--bs-body-color);
+  text-decoration: none;
+}
+
+.page-content ul.idx a.idx_dir::before {
+  content: "📁";
+  margin-right: 0.4em;
+}
+
+.page-content ul.idx a.idx_dir:hover,
+.page-content ul.idx a.idx_dir:focus {
+  color: var(--goteborg-blue);
+  text-decoration: underline;
+}
+
+.page-content ul.idx a.wikilink1,
+.page-content ul.idx a.wikilink2 {
+  text-decoration: none;
+}
+
+.page-content ul.idx a.wikilink1::before,
+.page-content ul.idx a.wikilink2::before {
+  content: "📄";
+  margin-right: 0.4em;
+}
+
+[data-bs-theme="dark"] .page-content ul.idx a.idx_dir {
+  color: var(--dark_text__);
+}
+
+[data-bs-theme="dark"] .page-content ul.idx a.idx_dir:hover,
+[data-bs-theme="dark"] .page-content ul.idx a.idx_dir:focus {
+  color: var(--goteborg-light-blue);
 }
 

@@ -25,6 +25,7 @@ $showSidebar = $hasSidebar && ($ACT=='show');
 </head>
 
 <body class="<?php echo tpl_classes(); ?> dokuwiki">
+    <div class="no"><?php tpl_indexerWebBug() /* krävs av DokuWiki för att trigga bakgrundsindexering (sökindex, taggar m.m.) - se dokuwiki:template */ ?></div>
     <div id="dokuwiki__site" class="template-goteborg">
         <!-- Toppheader med logotyp -->
         <header id="dokuwiki__header" class="bg-white py-3 w-100">
@@ -116,6 +117,31 @@ $showSidebar = $hasSidebar && ($ACT=='show');
                     <div id="dokuwiki__pageheader" class="mb-4">                       
                         <?php tpl_includeFile('pageheader.html') ?>
                         <?php if ($ACT == 'show'): ?>
+                        <?php
+                            // Hämta sidans taggar (tag plugin) via metadata, oavsett var
+                            // {{tag>...}} står i sidans text, så de kan visas uppe till höger.
+                            $goteborgTagHelper = plugin_load('helper', 'tag');
+                            $goteborgTags = array();
+                            if ($goteborgTagHelper) {
+                                $goteborgTagIds = p_get_metadata($ID, 'subject');
+                                if (!empty($goteborgTagIds)) {
+                                    $goteborgTags = (array) $goteborgTagIds;
+                                }
+                            }
+                        ?>
+                        <?php if (!empty($goteborgTags)): ?>
+                        <div class="goteborg-tags d-flex flex-wrap justify-content-end mb-2">
+                            <i class="bi bi-tags-fill goteborg-tags-icon" aria-hidden="true"></i>
+                            <?php foreach ($goteborgTags as $goteborgTag):
+                                $goteborgTagId = $goteborgTagHelper->getNamespace() . ':' . $goteborgTag;
+                                $goteborgTagExists = page_exists($goteborgTagId);
+                            ?>
+                            <a href="<?php echo wl($goteborgTagId) ?>"
+                               class="goteborg-tag-badge<?php echo $goteborgTagExists ? '' : ' goteborg-tag-badge--empty' ?>"
+                               title="<?php echo hsc($goteborgTag) ?>"><?php echo hsc($goteborgTag) ?></a>
+                            <?php endforeach; ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="tools d-flex justify-content-end mb-3">
                             <div class="btn-group">
                                 <?php tpl_action('edit', true, 'li', true, '<span class="btn btn-outline-primary btn-sm">', '</span>') ?>
@@ -149,8 +175,8 @@ $showSidebar = $hasSidebar && ($ACT=='show');
                     <div class="col-lg-4">
                         <h4 class="mb-3 h5">Verktyg</h4>
                         <ul class="list-unstyled">
-                            <li class="mb-2"><a href="<?php echo wl('recent'); ?>" class="text-white">Senast ändrade sidor</a></li>
-                            <li class="mb-2"><a href="<?php echo wl('sitemap'); ?>" class="text-white">Sidkarta</a></li>
+                            <li class="mb-2"><a href="<?php echo wl($ID, array('do'=>'recent')); ?>" class="text-white">Senast ändrade sidor</a></li>
+                            <li class="mb-2"><a href="<?php echo wl($ID, array('do'=>'index')); ?>" class="text-white">Sidkarta</a></li>
                             <?php if (empty($_SERVER['REMOTE_USER'])): ?>
                                 <li class="mb-2"><a href="<?php echo wl($ID, array('do'=>'login')); ?>" class="text-white">Administration | Logga in</a></li>
                             <?php else: ?>
