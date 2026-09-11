@@ -129,21 +129,21 @@ $showSidebar = $hasSidebar && ($ACT=='show');
                                 }
                             }
                         ?>
-                        <?php if (!empty($goteborgTags)): ?>
-                        <div class="goteborg-tags d-flex flex-wrap justify-content-end mb-2">
-                            <i class="bi bi-tags-fill goteborg-tags-icon" aria-hidden="true"></i>
-                            <?php foreach ($goteborgTags as $goteborgTag):
-                                $goteborgTagId = $goteborgTagHelper->getNamespace() . ':' . $goteborgTag;
-                                $goteborgTagExists = page_exists($goteborgTagId);
-                            ?>
-                            <a href="<?php echo wl($goteborgTagId) ?>"
-                               class="goteborg-tag-badge<?php echo $goteborgTagExists ? '' : ' goteborg-tag-badge--empty' ?>"
-                               title="<?php echo hsc($goteborgTag) ?>"><?php echo hsc($goteborgTag) ?></a>
-                            <?php endforeach; ?>
-                        </div>
-                        <?php endif; ?>
-                        <div class="tools d-flex justify-content-end mb-3">
-                            <div class="btn-group">
+                        <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
+                            <?php if (!empty($goteborgTags)): ?>
+                            <div class="goteborg-tags d-flex flex-wrap align-items-center">
+                                <?php foreach ($goteborgTags as $goteborgTag):
+                                    $goteborgTagId = $goteborgTagHelper->getNamespace() . ':' . $goteborgTag;
+                                    $goteborgTagExists = page_exists($goteborgTagId);
+                                ?>
+                                <a href="<?php echo wl($goteborgTagId) ?>"
+                                   class="goteborg-tag-badge<?php echo $goteborgTagExists ? '' : ' goteborg-tag-badge--empty' ?>"
+                                   title="<?php echo hsc($goteborgTag) ?>"><?php echo hsc($goteborgTag) ?></a>
+                                <?php endforeach; ?>
+                            </div>
+                            <span class="goteborg-tags-divider" aria-hidden="true"></span>
+                            <?php endif; ?>
+                            <div class="tools btn-group">
                                 <?php tpl_action('edit', true, 'li', true, '<span class="btn btn-outline-primary btn-sm">', '</span>') ?>
                                 <?php tpl_action('history', true, 'li', true, '<span class="btn btn-outline-secondary btn-sm">', '</span>') ?>
                                 <?php tpl_action('backlink', true, 'li', true, '<span class="btn btn-outline-secondary btn-sm">', '</span>') ?>
