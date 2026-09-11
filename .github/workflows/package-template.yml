@@ -1,0 +1,26 @@
+name: Package DokuWiki template
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Create template archive
+        run: zip -r goteborg.zip . -x '.git/*' '.github/*' 'goteborg.zip'
+
+      - name: Publish release archive
+        uses: softprops/action-gh-release@v2
+        with:
+          files: goteborg.zip
+          generate_release_notes: true

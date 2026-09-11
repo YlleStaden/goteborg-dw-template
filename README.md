@@ -19,10 +19,23 @@ En modern, responsiv DokuWiki-mall baserad på Bootstrap 5, som följer Götebor
 
 ## Installation
 
-1. Ladda ner ZIP-filen med templaten
+1. Ladda ner [senaste ZIP-filen](https://github.com/YlleStaden/goteborg-dw-template/releases/latest/download/goteborg.zip) med templaten
 2. Packa upp filerna i `lib/tpl/goteborg` i din DokuWiki-installation
 3. Gå till Admin -> Konfigurationshanteraren och välj "goteborg" som aktiv mall
 4. Anpassa inställningarna efter behov
+
+### GitHub Actions
+
+En ny ZIP-fil publiceras automatiskt som en GitHub Release när en tagg som börjar med `v` pushas, till exempel:
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+Release-arkivet kan sedan användas direkt som template-URL:
+
+`https://github.com/YlleStaden/goteborg-dw-template/releases/latest/download/goteborg.zip`
 
 ## Konfiguration
 
