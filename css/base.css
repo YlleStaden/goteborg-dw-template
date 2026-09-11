@@ -170,6 +170,11 @@
   --bs-light-border-subtle: #404040;
 }
 
+/* DokuWiki housekeeping-element (t.ex. indexerWebBug) ska aldrig synas eller ta plats */
+.no {
+  display: none;
+}
+
 /* Typografi och grundläggande stilar */
 body {
   font-family: var(--bs-font-sans-serif);

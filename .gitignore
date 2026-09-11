@@ -1,0 +1,14 @@
+# Local editor and agent settings
+.claude/
+.vscode/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Generated archives and temporary files
+*.zip
+*.tmp
+*.bak

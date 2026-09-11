@@ -313,55 +313,78 @@ div.error {
   color: var(--dark_text__);
 }
 
-/* Taggar (tag plugin) - visas diskret längst ner på sidan, se main.php */
+/* Taggar (tag plugin) - visas som diskreta chips längst ner på sidan, se main.php */
 .goteborg-tags {
-  gap: 0.6em;
-  padding-top: var(--spacing-sm);
+  gap: 0.5em;
+  padding-top: var(--spacing-md);
+  margin-top: var(--spacing-sm);
   border-top: 1px solid var(--dokuwiki-border);
 }
 
 .goteborg-tag-badge {
   display: inline-flex;
   align-items: center;
-  font-size: 0.78rem;
-  font-weight: 400;
-  color: var(--bs-secondary-color, #6c757d);
-  background: none;
-  border: none;
-  padding: 0;
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--goteborg-dark-blue);
+  background-color: rgba(0, 119, 188, 0.08);
+  border: 1px solid rgba(0, 119, 188, 0.18);
+  border-radius: 999px;
+  padding: 0.35em 0.85em;
   text-decoration: none;
-  transition: color 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, color 0.15s ease-in-out;
 }
 
 .goteborg-tag-badge::before {
   content: "#";
-  margin-right: 0.05em;
+  margin-right: 0.15em;
   opacity: 0.6;
 }
 
 .goteborg-tag-badge:hover,
 .goteborg-tag-badge:focus {
-  color: var(--goteborg-blue);
-  text-decoration: underline;
+  color: #fff;
+  background-color: var(--goteborg-blue);
+  border-color: var(--goteborg-blue);
+  text-decoration: none;
 }
 
 /* Tagg vars sida inte finns ännu */
 .goteborg-tag-badge--empty {
-  font-style: italic;
-  opacity: 0.75;
+  color: var(--bs-secondary-color, #6c757d);
+  background-color: transparent;
+  border-style: dashed;
+}
+
+.goteborg-tag-badge--empty:hover,
+.goteborg-tag-badge--empty:focus {
+  color: #fff;
+  background-color: var(--goteborg-blue);
+  border-color: var(--goteborg-blue);
+  border-style: solid;
 }
 
 [data-bs-theme="dark"] .goteborg-tag-badge {
-  color: var(--bs-secondary-color, #adb5bd);
+  color: var(--goteborg-light-blue);
+  background-color: rgba(71, 158, 245, 0.12);
+  border-color: rgba(71, 158, 245, 0.28);
 }
 
 [data-bs-theme="dark"] .goteborg-tag-badge:hover,
 [data-bs-theme="dark"] .goteborg-tag-badge:focus {
-  color: var(--goteborg-light-blue);
+  color: #04263f;
+  background-color: var(--goteborg-light-blue);
+  border-color: var(--goteborg-light-blue);
+}
+
+[data-bs-theme="dark"] .goteborg-tag-badge--empty {
+  color: var(--bs-secondary-color, #adb5bd);
+  background-color: transparent;
 }
 
 /* Dölj tag-pluginets egen radering i sidans brödtext - taggarna visas
-   redan snyggare uppe till höger i sidhuvudet, se .goteborg-tags ovan */
+   redan snyggare längst ner på sidan, se .goteborg-tags ovan */
 .page-content div.tags {
   display: none;
 }

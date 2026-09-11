@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Create template archive
-        run: zip -r goteborg.zip . -x '.git/*' '.github/*' 'goteborg.zip'
+        run: git archive --format=zip --output=goteborg.zip HEAD
 
       - name: Publish release archive
         uses: softprops/action-gh-release@v2
