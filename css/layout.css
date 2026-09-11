@@ -8,7 +8,7 @@
 #dokuwiki__header {
   background-color: var(--dokuwiki-background);
   border-bottom: 1px solid var(--dokuwiki-border);
-  padding: var(--spacing-md) 0;
+  padding: var(--spacing-sm) 0;
 }
 
 /* Logo styling */
@@ -355,7 +355,7 @@ h3 {
 }
 
 .goteborg-header-title {
-  font-size: 2.5rem;
+  font-size: 1.75rem;
   font-weight: 700;
   color: #333;
   letter-spacing: -1px;
@@ -363,9 +363,9 @@ h3 {
 }
 
 .site-logo {
-  height: 56px;
+  height: 44px;
   width: auto;
-  margin-right: 1.5rem;
+  margin-right: 1rem;
   margin-left: 0;
 }
 

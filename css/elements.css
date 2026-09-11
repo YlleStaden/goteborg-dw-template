@@ -349,14 +349,6 @@ div.error {
   opacity: 0.75;
 }
 
-.goteborg-tags-divider {
-  display: inline-block;
-  width: 1px;
-  align-self: stretch;
-  min-height: 1em;
-  background-color: var(--dokuwiki-border);
-}
-
 [data-bs-theme="dark"] .goteborg-tag-badge {
   color: var(--bs-secondary-color, #adb5bd);
 }
@@ -364,12 +356,6 @@ div.error {
 [data-bs-theme="dark"] .goteborg-tag-badge:hover,
 [data-bs-theme="dark"] .goteborg-tag-badge:focus {
   color: var(--goteborg-light-blue);
-}
-
-@media (max-width: 575.98px) {
-  .goteborg-tags-divider {
-    display: none;
-  }
 }
 
 /* Dölj tag-pluginets egen radering i sidans brödtext - taggarna visas

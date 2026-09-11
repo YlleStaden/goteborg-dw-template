@@ -141,7 +141,6 @@ $showSidebar = $hasSidebar && ($ACT=='show');
                                    title="<?php echo hsc($goteborgTag) ?>"><?php echo hsc($goteborgTag) ?></a>
                                 <?php endforeach; ?>
                             </div>
-                            <span class="goteborg-tags-divider" aria-hidden="true"></span>
                             <?php endif; ?>
                             <div class="tools btn-group">
                                 <?php tpl_action('edit', true, 'li', true, '<span class="btn btn-outline-primary btn-sm">', '</span>') ?>
