@@ -313,9 +313,11 @@ div.error {
   color: var(--dark_text__);
 }
 
-/* Taggar (tag plugin) - visas diskret uppe till höger i sidhuvudet, se main.php */
+/* Taggar (tag plugin) - visas diskret längst ner på sidan, se main.php */
 .goteborg-tags {
   gap: 0.6em;
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--dokuwiki-border);
 }
 
 .goteborg-tag-badge {

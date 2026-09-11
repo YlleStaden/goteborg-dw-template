@@ -117,32 +117,8 @@ $showSidebar = $hasSidebar && ($ACT=='show');
                     <div id="dokuwiki__pageheader" class="mb-4">                       
                         <?php tpl_includeFile('pageheader.html') ?>
                         <?php if ($ACT == 'show'): ?>
-                        <?php
-                            // Hämta sidans taggar (tag plugin) via metadata, oavsett var
-                            // {{tag>...}} står i sidans text, så de kan visas uppe till höger.
-                            $goteborgTagHelper = plugin_load('helper', 'tag');
-                            $goteborgTags = array();
-                            if ($goteborgTagHelper) {
-                                $goteborgTagIds = p_get_metadata($ID, 'subject');
-                                if (!empty($goteborgTagIds)) {
-                                    $goteborgTags = (array) $goteborgTagIds;
-                                }
-                            }
-                        ?>
-                        <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
-                            <?php if (!empty($goteborgTags)): ?>
-                            <div class="goteborg-tags d-flex flex-wrap align-items-center">
-                                <?php foreach ($goteborgTags as $goteborgTag):
-                                    $goteborgTagId = $goteborgTagHelper->getNamespace() . ':' . $goteborgTag;
-                                    $goteborgTagExists = page_exists($goteborgTagId);
-                                ?>
-                                <a href="<?php echo wl($goteborgTagId) ?>"
-                                   class="goteborg-tag-badge<?php echo $goteborgTagExists ? '' : ' goteborg-tag-badge--empty' ?>"
-                                   title="<?php echo hsc($goteborgTag) ?>"><?php echo hsc($goteborgTag) ?></a>
-                                <?php endforeach; ?>
-                            </div>
-                            <?php endif; ?>
-                            <div class="tools btn-group">
+                        <div class="tools d-flex justify-content-end mb-3">
+                            <div class="btn-group">
                                 <?php tpl_action('edit', true, 'li', true, '<span class="btn btn-outline-primary btn-sm">', '</span>') ?>
                                 <?php tpl_action('history', true, 'li', true, '<span class="btn btn-outline-secondary btn-sm">', '</span>') ?>
                                 <?php tpl_action('backlink', true, 'li', true, '<span class="btn btn-outline-secondary btn-sm">', '</span>') ?>
@@ -154,6 +130,32 @@ $showSidebar = $hasSidebar && ($ACT=='show');
                     <div class="page-content">
                         <?php tpl_content(false) ?>
                     </div>
+                    <?php if ($ACT == 'show'): ?>
+                    <?php
+                        // Hämta sidans taggar (tag plugin) via metadata, oavsett var
+                        // {{tag>...}} står i sidans text, så de kan visas längst ner på sidan.
+                        $goteborgTagHelper = plugin_load('helper', 'tag');
+                        $goteborgTags = array();
+                        if ($goteborgTagHelper) {
+                            $goteborgTagIds = p_get_metadata($ID, 'subject');
+                            if (!empty($goteborgTagIds)) {
+                                $goteborgTags = (array) $goteborgTagIds;
+                            }
+                        }
+                    ?>
+                    <?php if (!empty($goteborgTags)): ?>
+                    <div class="goteborg-tags d-flex flex-wrap align-items-center justify-content-end gap-2 mt-3">
+                        <?php foreach ($goteborgTags as $goteborgTag):
+                            $goteborgTagId = $goteborgTagHelper->getNamespace() . ':' . $goteborgTag;
+                            $goteborgTagExists = page_exists($goteborgTagId);
+                        ?>
+                        <a href="<?php echo wl($goteborgTagId) ?>"
+                           class="goteborg-tag-badge<?php echo $goteborgTagExists ? '' : ' goteborg-tag-badge--empty' ?>"
+                           title="<?php echo hsc($goteborgTag) ?>"><?php echo hsc($goteborgTag) ?></a>
+                        <?php endforeach; ?>
+                    </div>
+                    <?php endif; ?>
+                    <?php endif; ?>
                     <div id="dokuwiki__pagefooter">
                         <?php tpl_includeFile('pagefooter.html') ?>
                     </div>
