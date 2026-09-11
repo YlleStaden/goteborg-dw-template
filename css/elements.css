@@ -350,21 +350,6 @@ div.error {
   text-decoration: none;
 }
 
-/* Tagg vars sida inte finns ännu */
-.goteborg-tag-badge--empty {
-  color: var(--bs-secondary-color, #6c757d);
-  background-color: transparent;
-  border-style: dashed;
-}
-
-.goteborg-tag-badge--empty:hover,
-.goteborg-tag-badge--empty:focus {
-  color: #fff;
-  background-color: var(--goteborg-blue);
-  border-color: var(--goteborg-blue);
-  border-style: solid;
-}
-
 [data-bs-theme="dark"] .goteborg-tag-badge {
   color: var(--goteborg-light-blue);
   background-color: rgba(71, 158, 245, 0.12);
@@ -376,11 +361,6 @@ div.error {
   color: #04263f;
   background-color: var(--goteborg-light-blue);
   border-color: var(--goteborg-light-blue);
-}
-
-[data-bs-theme="dark"] .goteborg-tag-badge--empty {
-  color: var(--bs-secondary-color, #adb5bd);
-  background-color: transparent;
 }
 
 /* Dölj tag-pluginets egen radering i sidans brödtext - taggarna visas

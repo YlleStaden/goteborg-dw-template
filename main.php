@@ -147,10 +147,9 @@ $showSidebar = $hasSidebar && ($ACT=='show');
                     <div class="goteborg-tags d-flex flex-wrap align-items-center justify-content-end gap-2 mt-3">
                         <?php foreach ($goteborgTags as $goteborgTag):
                             $goteborgTagId = $goteborgTagHelper->getNamespace() . ':' . $goteborgTag;
-                            $goteborgTagExists = page_exists($goteborgTagId);
                         ?>
-                        <a href="<?php echo wl($goteborgTagId) ?>"
-                           class="goteborg-tag-badge<?php echo $goteborgTagExists ? '' : ' goteborg-tag-badge--empty' ?>"
+                        <a href="<?php echo wl($goteborgTagId, array('do' => 'showtag', 'tag' => $goteborgTag)) ?>"
+                           class="goteborg-tag-badge"
                            title="<?php echo hsc($goteborgTag) ?>"><?php echo hsc($goteborgTag) ?></a>
                         <?php endforeach; ?>
                     </div>

@@ -67,11 +67,6 @@ function setupTOC() {
 function setupExternalLinks() {
   const externalLinks = document.querySelectorAll('a.external, a.urlextern');
   externalLinks.forEach(link => {
-    // Lägg till ikon för externa länkar
-    if (!link.querySelector('.external-icon')) {
-      link.insertAdjacentHTML('beforeend', '<span class="external-icon ms-1" aria-hidden="true">↗</span>');
-    }
-    
     // Lägg till attribut för säkerhet och tillgänglighet
     link.setAttribute('rel', 'noopener noreferrer');
     if (!link.getAttribute('aria-label')) {
