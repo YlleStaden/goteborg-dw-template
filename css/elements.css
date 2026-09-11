@@ -454,7 +454,7 @@ textarea#wiki__text.edit {
   width: 100%;
   padding: var(--spacing-md);
   font-family: var(--bs-font-monospace, Consolas, 'Liberation Mono', Menlo, monospace);
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   line-height: 1.6;
   border: 1px solid var(--dokuwiki-border);
   border-radius: var(--border-radius-md);

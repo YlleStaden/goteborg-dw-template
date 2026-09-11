@@ -25,7 +25,7 @@ $showSidebar = $hasSidebar && ($ACT=='show');
 </head>
 
 <body class="<?php echo tpl_classes(); ?> dokuwiki">
-    <div class="no"><?php tpl_indexerWebBug() /* krävs av DokuWiki för att trigga bakgrundsindexering (sökindex, taggar m.m.) - se dokuwiki:template */ ?></div>
+    <div class="no" style="display:none;"><?php tpl_indexerWebBug() /* krävs av DokuWiki för att trigga bakgrundsindexering (sökindex, taggar m.m.) - se dokuwiki:template. Inline style som extra säkerhet oavsett CSS-cache/laddningsordning. */ ?></div>
     <div id="dokuwiki__site" class="template-goteborg">
         <!-- Toppheader med logotyp -->
         <header id="dokuwiki__header" class="bg-white py-3 w-100">
